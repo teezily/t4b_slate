@@ -1,6 +1,5 @@
-# Catalog
+# Design specification
 
-## Design specification
 The Design specification catalog cointains our different products with their recommended printing specifcations, If your designs don't match the recommended width and height we will adapt it the best possible way.
 
 Product reference | Name | Side key | Recommended design size
