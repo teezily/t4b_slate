@@ -1,6 +1,6 @@
-# Products
+# Catalog Products
 
-## Get All Products and Variants
+## Get all Products and Variants
 
 ```ruby
 
@@ -22,12 +22,15 @@
 
 ```json
 {
-  "status": "success",
-  "result": [
+  "next": "http://api.example.org/?page=4",
+  "previous": "http://api.example.org?page=2",
+  "count": 42,
+  "results": [
     {
       "name": "Classic T-Shirt",
       "id": "2",
-      "img": "https://d33jplnp2vyxjf.cloudfront.net/exproduct/5000-front.png",
+      "reference": "TSRN_U",
+      "image": "http://cdn.api.example.org/product/5000-front.png",
       "variants": [
         {
           "id": "1",
@@ -36,6 +39,8 @@
           "size": "XXL",
           "color": "red",
           "hex_color_code": "ff0000",
+          "price": 12.45
+          // "currency" ?
         },
         {
           "id": "2",
@@ -44,10 +49,11 @@
           "size": "3XL",
           "color": "red",
           "hex_color_code": "ff0000",
+          "price": 12.45
         }
       ]
     }
-  ] ...
+  ]
 }
 ```
 
@@ -57,35 +63,45 @@ This endpoint retrieves Products and their associated Variants.
 
 `GET http://plus.teezily.com/api/v2/catalog/products`
 
+Parameter | Required | Type | Description |
+--------- | -------- | ---- | ----------- |
+page | No | Integer | A page number within the paginated result set, input 0 to fetch the entire set
+limit | No | Integer | Number of results to return per page
+reference | No | String | Filter by name
+name | No | String | Filter by reference
 
 ### HTTP Response
 
 Parameter | Type | Description |
 --------- | ---- | ----------- |
-status | String |
-result | Array | An array of [Products](/#product) |
+count | Integer | Number of results
+next | String | URL for the next page
+previous | String | URL for the previous page
+results | Array | An array of [Products](/#product) |
 
 ### Product
 
 Parameter | Type | Description |
 --------- | ---- | ----------- |
-name | String |
-id | String |
-img | String |
+name | String | The product name
+id | String | The product id
+image | String | The product image
+reference | String | The product reference
 variants | Array | An array of [Variants](/#variant) |
 
 ### Variant
 
 Parameter | Type | Description |
 --------- | ---- | ----------- |
-id | String
-reference | String
-name | String
-size | String
-color | String
-hex_color_code | String 
+id | String | The variant id
+reference | String | The variant reference
+name | String | The variant name
+size | String | The variant size
+color | String | The variant color
+hex_color_code | String | An hexadecimal code representing the color
+price | Float | The variant price in the currency defined in your account setting
 
 
 <aside class="success">
-Mutable variant ID ? Should we include pagination ? price ? add reference in product ? filter, remove status, remove message, zipcode vs postcde, external_id vs external_reference, check async
+Mutable variant ID ? filter one att ? add count ? Price currency ? Price float or string ? rename limit to page_size / page_limit ?
 </aside>
