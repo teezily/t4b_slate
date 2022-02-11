@@ -39,8 +39,8 @@
           "size": "XXL",
           "color": "red",
           "hex_color_code": "ff0000",
-          "price": 12.45
-          // "currency" ?
+          "price": 12.45,
+          "price_currency": "USD"
         },
         {
           "id": "2",
@@ -49,7 +49,8 @@
           "size": "3XL",
           "color": "red",
           "hex_color_code": "ff0000",
-          "price": 12.45
+          "price": 12.45,
+          "price_currency": "USD"
         }
       ]
     }
@@ -65,10 +66,10 @@ This endpoint retrieves Products and their associated Variants.
 
 Parameter | Required | Type | Description |
 --------- | -------- | ---- | ----------- |
-page | No | Integer | A page number within the paginated result set, input 0 to fetch the entire set
-limit | No | Integer | Number of results to return per page
-reference | No | String | Filter by name
-name | No | String | Filter by reference
+page[number] | No | Integer | A page number within the paginated result set
+page[size] | No | Integer | Number of results to return per page
+filter[name] | No | String | Filter by name
+filter[reference] | No | String | Filter by reference
 
 ### HTTP Response
 
@@ -100,8 +101,9 @@ size | String | The variant size
 color | String | The variant color
 hex_color_code | String | An hexadecimal code representing the color
 price | Float | The variant price in the currency defined in your account setting
+price_currency | String | The price currency, as configured in your account
 
 
 <aside class="success">
-Mutable variant ID ? filter one att ? add count ? Price currency ? Price float or string ? rename limit to page_size / page_limit ?
+Mutable variant ID ? filter one att ? add count ? Price currency ? rename limit to page_size / page_limit ?
 </aside>
