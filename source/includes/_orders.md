@@ -18,7 +18,7 @@ Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 external_reference | No| String | Your Order ID: O-xxx. Usefull to track orders. The API will raise an error if you have any other non-canceled orders with the same `external_reference`
 address | **Yes** | Object | An [Address](/#address) Object. The API will attempt to verify the address before accepting order
-shipping_method | No | String | Can be `economy` or `express`
+shipping_method | No | String | Can be `standard` or `tracking`
 line_items | **Yes** | Array | An array of [Line Item](/#line-item) Object
 retail | No | Object | A [Retail](/#retail) object for invoicing
 status | No | String | Fulfillment internal status. do not submit this parameter for creation
@@ -57,11 +57,11 @@ retail_price | No | String | Value of single item as purchased from the end cust
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 key | **Yes** | String | Can be `front`, `back`, ... see our [Design specification](/#design-specification) `Side key` column
-design_url | No | String | The url of the production design. Either `design_url` or `design_file` must be specified
-design_file | No | File | If you wish to submit your payload in `multipart/form-data` and attach directly the file in it. Either `design_url` or `design_file` must be specified
+url | No | String | The url of the production design. Either `url` or `file` must be specified
+file | No | File | If you wish to submit your payload in `multipart/form-data` and attach directly the file in it. Either `url` or `file` must be specified
 position | No | String | Defaults to `auto`. Used to align the artwork within print area. Valid values are `top_left`, `top`, `top_right`, `center_left`, `center`, `center_right`, `bottom_left`, `bottom`, `bottom_right`, `manual`. Using `auto` will adjust your design the best way possible given the product, it is recommended you use this setting.
-top | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design
-left | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design
+x | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design
+y | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design
 scale | No | String | When using `manual`. Value ranges from `0` to `100`
 
 
@@ -110,9 +110,9 @@ Returns an [Order](/#order) object
 
 Parameter |  Type | Description
 --------- |  ---- | -----------
-page | Integer | A page number within the paginated result set
-limit | Integer | Number of results to return per page
-status | String | Filter by status
+page[number] | Integer | A page number within the paginated result set
+page[size] | Integer | Number of results to return per page
+filter[status] | String | Filter by status
 
 
 ### HTTP Response
@@ -133,17 +133,12 @@ Once an order is created, in order to send it to production you need to use the 
 
 ### HTTP Request
 
-`PUT http://plus.teezily.com/api/v2/orders/fulfill/{id}`
+`PUT http://plus.teezily.com/api/v2/orders/{id}/fulfill`
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-id | String | The order ID
+id | String | **Yes** | The order ID
 
-`PUT http://plus.teezily.com/api/v2/orders/fulfill?external_reference={external_reference}`
-
-Parameter | Required | Type | Description
---------- | -------- | ---- | -----------
-id | String | The external order reference
 
 ### HTTP Response
 
@@ -156,23 +151,18 @@ If an order is not yet produced you might still be able to cancel it using the f
 
 ### HTTP Request
 
-`PUT http://plus.teezily.com/api/v2/orders/cancel/{id}`
+`PUT http://plus.teezily.com/api/v2/orders/{id}/cancel`
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 id | **Yes** | String | The order ID
 
-`PUT http://plus.teezily.com/api/v2/orders/cancel?external_reference={external_reference}`
-
-Parameter | Required | Type | Description
---------- | -------- | ---- | -----------
-external_reference | **Yes** | String | The external order reference
 
 ### HTTP Response
 
 Status code | Description
 ----------- | -----------
-200 | Order successfully canceled
+204 | Order successfully canceled
 403 | Order can't be canceled
 410 | Order already canceled
 

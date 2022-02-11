@@ -5,6 +5,7 @@ The Teezily Plus API uses the following HTTP status codes:
 HTTP Status Code | Meaning
 ---------------- | -------
 200 | Ok
+204 | Ok -- No content
 400 | Bad Request -- Your request is invalid.
 401 | Unauthorized -- Your API key is wrong.
 403 | Forbidden -- The following ressource requested is forbidden.
