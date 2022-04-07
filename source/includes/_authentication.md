@@ -5,10 +5,10 @@ like the following:
 
 `Authorization: Bearer [API_KEY]`
 
-You can find your API key in Settings in your [account](https://plus.teezily.com/account/settings).
+If you already have a Shop API you can find its key in its [settings](/account/shops/new) otherwise create a new Shop API [here](/account/shop_api_/new).
 
 <aside class="notice">
-You must replace <code>[API_KEY]</code> with your personal API key.
+You must replace <code>[API_KEY]</code> with the key of your Shop API.
 </aside>
 
 

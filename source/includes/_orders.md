@@ -3,13 +3,12 @@
 ## Create an order
 
 ```shell
-curl --location --request POST 'http://plus.teezily.com/api/v2/orders' \
+curl --location --request POST 'https://plus.teezily.com/api/v2/orders' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "external_reference": "C9759",
-  "shipping_method": "tracking",
   "email": "orval_jerde@ko.org",
   "address": {
     "first_name": "Shalon",
@@ -48,7 +47,6 @@ conn = http.client.HTTPSConnection("plus.teezily.com", undefined)
 payload = json.dumps({
   "email": "orval_jerde@ko.org",
   "external_reference": "C9759",
-  "shipping_method": "tracking",
   "address": {
     "first_name": "Shalon",
     "last_name": "Kihn",
@@ -91,7 +89,7 @@ require "uri"
 require "json"
 require "net/http"
 
-url = URI("http://plus.teezily.com/api/v2/orders")
+url = URI("https://plus.teezily.com/api/v2/orders")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
@@ -101,7 +99,6 @@ request["Content-Type"] = "application/json"
 request.body = JSON.dump({
   "email": "orval_jerde@ko.org",
   "external_reference": "C9759",
-  "shipping_method": "tracking",
   "address": {
     "first_name": "Shalon",
     "last_name": "Kihn",
@@ -140,7 +137,6 @@ puts response.read_body
 {
   "id": 152,
   "external_reference": "C9759",
-  "shipping_method": "tracking",
   "email": "orval_jerde@ko.org",
   "status": "pending",
   "address": {
@@ -167,19 +163,20 @@ puts response.read_body
 
 ### HTTP Request
 
-`POST http://plus.teezily.com/api/v2/orders`
+`POST https://plus.teezily.com/api/v2/orders`
 
 ### Order
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 external_reference | No| String | Your Order ID: O-xxx. Usefull to track orders. The API will raise an error if you have any other non-canceled orders with the same `external_reference`
-shipping_method | No | String | Can be `standard` or `tracking`
 email | Yes | String | Buyer's e-mail
 status | No | String | Fulfillment internal status. do not submit this parameter for creation
 address | **Yes** | Object | An [Address](./#address) Object. The API will attempt to verify the address before accepting order
 retail | No | Object | A [Retail](./#retail) object for invoicing
 line_items | **Yes** | Array | An array of [Line Item](./#line-item) Object
+
+<!-- shipping_method | No | String | Can be `standard` or `tracking` -->
 
 ### HTTP Response
 Returns an [Order](./#order) object
@@ -246,7 +243,7 @@ tax | **Yes** |  String | Tax price
 ## Get a single order
 
 ```shell
-curl --location --request GET 'http://plus.teezily.com/api/v2/orders/152' \
+curl --location --request GET 'https://plus.teezily.com/api/v2/orders/152' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'
 ```
@@ -270,7 +267,7 @@ print(data.decode("utf-8"))
 require "uri"
 require "net/http"
 
-url = URI("http://plus.teezily.com/api/v2/orders/152")
+url = URI("https://plus.teezily.com/api/v2/orders/152")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Get.new(url)
@@ -314,13 +311,13 @@ puts response.read_body
 
 ### HTTP Request
 
-`GET http://plus.teezily.com/api/v2/orders/{id}`
+`GET https://plus.teezily.com/api/v2/orders/{id}`
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 id | String | **Yes** | The order ID
 
-`GET http://plus.teezily.com/api/v2/orders?external_reference={id}`
+`GET https://plus.teezily.com/api/v2/orders?external_reference={id}`
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
@@ -333,7 +330,7 @@ Returns an [Order](./#order) object
 ## Get all orders
 
 ```shell
-curl --location --request GET 'http://plus.teezily.com/api/v2/orders' \
+curl --location --request GET 'https://plus.teezily.com/api/v2/orders' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'
 ```
@@ -357,7 +354,7 @@ print(data.decode("utf-8"))
 require "uri"
 require "net/http"
 
-url = URI("http://plus.teezily.com/api/v2/orders")
+url = URI("https://plus.teezily.com/api/v2/orders")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Get.new(url)
@@ -433,12 +430,12 @@ puts response.read_body
 
 ### HTTP Request
 
-`GET http://plus.teezily.com/api/v2/orders`
+`GET https://plus.teezily.com/api/v2/orders`
+
+Available parameters, in addition to [pagination](./#pagination):
 
 Parameter |  Type | Description
 --------- |  ---- | -----------
-page | Integer | A page number within the paginated result set
-limit | Integer | Number of results to return per page
 status | String | Filter by status
 
 ### HTTP Response
@@ -454,7 +451,7 @@ count | Integer | Number of results
 ## Fulfill an order
 
 ```shell
-curl --location --request PUT 'http://plus.teezily.com/api/v2/orders/152/fulfill' \
+curl --location --request PUT 'https://plus.teezily.com/api/v2/orders/152/fulfill' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'
 ```
@@ -478,7 +475,7 @@ require "net/http"
 ```
 
 ```ruby
-url = URI("http://plus.teezily.com/api/v2/orders/152/fulfill")
+url = URI("https://plus.teezily.com/api/v2/orders/152/fulfill")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Put.new(url)
@@ -495,7 +492,7 @@ Once an order is created, in order to send it to production you need to use the 
 
 ### HTTP Request
 
-`PUT http://plus.teezily.com/api/v2/orders/{id}/fulfill`
+`PUT https://plus.teezily.com/api/v2/orders/{id}/fulfill`
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
@@ -509,7 +506,7 @@ No content.
 ## Cancel an order
 
 ```shell
-curl --location --request PUT 'http://plus.teezily.com/api/v2/orders/152/cancel' \
+curl --location --request PUT 'https://plus.teezily.com/api/v2/orders/152/cancel' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'
 ```
@@ -533,7 +530,7 @@ require "net/http"
 ```
 
 ```ruby
-url = URI("http://plus.teezily.com/api/v2/orders/152/cancel")
+url = URI("https://plus.teezily.com/api/v2/orders/152/cancel")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Put.new(url)
@@ -550,7 +547,7 @@ If an order is not yet produced you might still be able to cancel it using the f
 
 ### HTTP Request
 
-`PUT http://plus.teezily.com/api/v2/orders/{id}/cancel`
+`PUT https://plus.teezily.com/api/v2/orders/{id}/cancel`
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------

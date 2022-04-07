@@ -7,7 +7,7 @@ language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of
   - ruby
 
 toc_footers:
-  - <a href='https://plus.teezily.com'>Sign Up for a Developer Key</a>
+  - <a href='https://plus.teezily.com'>Sign up to create an Shop API</a>
 
 includes:
   - introduction
@@ -15,6 +15,7 @@ includes:
   - products
   - orders
   - webhooks
+  - pagination
   - rate_limits
   - status_codes
   - catalog

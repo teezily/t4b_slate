@@ -23,7 +23,7 @@ Parameter | Type | Description
 event.uuid | String | UUID of the event.
 event.object_id | String | ID of the event's object being sent over.
 event.object_type | String | the type event's object type being sent over.
-event.action | String | The name of the event. This matches the list of events in the settings.
+event.action | String | The name of the event.
 event.message | String | Human readable message of event.
 event.timestamp | String | When the event occured.
 data | String | The latest data of the object. This data matches the same format as the `GET` requests.
@@ -55,6 +55,13 @@ The payload body signature is passed along with each request in the headers as X
 ### Validating payloads from Teezily
 
 Next, compute a request body hash using your API key, and ensure that the hash from Teezily matches. Teezily uses an HMAC hexdigest to compute the hash. Always use "constant time" string comparisons, which renders it safe from certain timing attacks against regular equality operators.
+
+## Creating you webhooks
+
+Webhook URL and secret key are defined in the settings of your Shop API.
+
+If you already have a Shop API you can find it [here](/account/shops/new) otherwise create a new Shop API [here](/account/shop_api_/new).
+
 
 <!---
 

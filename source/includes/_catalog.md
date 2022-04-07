@@ -2,8 +2,11 @@
 
 The Design specification catalog cointains our different products with their recommended printing specifcations, If your designs don't match the recommended width and height we will adapt it the best possible way.
 
-Product reference | Name | Side key | Recommended design size
------------------ | ---- | -------- | -----------------------
+<!-- Product reference | Name | Side key | Recommended design size
+----------------- | ---- | -------- | ----------------------- -->
+
+Product reference | Name | Side key
+----------------- | ---- | --------
 TSRN_U | Round neck T-Shirt Unisex | front | 1000x1000
 TSRN_U | Round neck T-Shirt Unisex | back | 1000x1000
 TSRN_W | Round neck T-Shirt Woman | front | 1000x1000
