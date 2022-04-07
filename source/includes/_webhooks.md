@@ -8,13 +8,10 @@ When an event occurs, the Teezily server will make a POST request to your define
 
 Object | Event | Description
 ------ | ----- | -----------
-Order | order_created | Order created
-Order | order_canceled | Order canceled
-Order | order_reprinted | Order reprinted
 Order | order_status_updated | Order status updated
-Order | tracking_added | Order tracking added
-Order | tracking_updated | Order tracking added
-Order | tracking_deleted | Order tracking deleted
+Order | tracking_added | Order tracking added (coming soon)
+Order | tracking_updated | Order tracking added (coming soon)
+Order | tracking_deleted | Order tracking deleted (coming soon)
 
 ### HTTP Request
 
@@ -53,7 +50,7 @@ The payload body signature is passed along with each request in the headers as X
 
 #### Signature example
 
-`x-pfy-signature: sha256=c5e896be0dc286e8fe901d5dc1eae1422478475da21d64dfb4563c08e05ca12f`
+`X-Tzy-Signature: sha256=c5e896be0dc286e8fe901d5dc1eae1422478475da21d64dfb4563c08e05ca12f`
 
 ### Validating payloads from Teezily
 
@@ -138,5 +135,6 @@ Order remove hold |
 
 --->
 
-
+<!--
 <aside class="warning">I don't see the utility of registering webhooks.... if a webhook URL is registered we should just push on it, how about packages split tracking ? should we push line item or for tracking</aside>
+-->

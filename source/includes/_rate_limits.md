@@ -1,13 +1,16 @@
 # Rate limits
 
-> Once throttles the API will return the following JSON:
+> Once throttled the API will return the following JSON:
 
 ```json
 {
-  "error": {
-    "key": "throttled",
-    "message": "Request was throttled. Available in 59 seconds."
-  }
+  errors: [
+    {
+      code: "RateLimitError",
+      title: "Too Many Requests",
+      detail: "Your requests exceeded the rate of 60 by period of 60 seconds."
+    }
+  ]
 }
 ```
 
@@ -17,18 +20,6 @@ Time period | Call limit |
 ----------- | ---------- |
 1 minute | 60 calls
 
-#### Response header example
+### Response header
 
-`x-tzy-limit: 40`
-
-<!--
-  ### HTTP Response
-  Slate JS Scroller issue as we miss an H2 (##), we hardcode it in HTML
--->
-<h3 id="rate-limits-http-response">HTTP Response</h3>
-
-
-Parameter | Type | Description |
---------- | ---- | ----------- |
-error.key | String |
-error.message | String |
+`X-Tzy-Limit: 60`
