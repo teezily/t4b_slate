@@ -3,7 +3,7 @@
 ## Get all Products and Variants
 
 ```shell
-curl --location --request GET 'http://plus.teezily.com/api/v2/catalog/products' \
+curl --location --request GET 'https://plus.teezily.com/api/v2/catalog/products' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'
 ```
@@ -27,7 +27,7 @@ print(data.decode("utf-8"))
 require "uri"
 require "net/http"
 
-url = URI("http://plus.teezily.com/api/v2/catalog/products")
+url = URI("https://plus.teezily.com/api/v2/catalog/products")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Get.new(url)
@@ -97,12 +97,12 @@ This endpoint retrieves Products and their associated Variants.
 
 ### HTTP Request
 
-`GET http://plus.teezily.com/api/v2/catalog/products`
+`GET https://plus.teezily.com/api/v2/catalog/products`
+
+Available parameters, in addition to [pagination](./#pagination):
 
 Parameter | Required | Type | Description |
 --------- | -------- | ---- | ----------- |
-page | No | Integer | A page number within the paginated result set
-limit | No | Integer | Number of results to return per page
 name | No | String | Filter by name
 reference | No | String | Filter by reference
 
