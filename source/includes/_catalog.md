@@ -85,5 +85,6 @@ NECKL_S | Square Pendant Necklace | front | 1000x1000
 ORCE_H | Heart Shaped Ornament | front | 1000x1000
 ORCE_R | Round Shaped Ornament | front | 1000x1000
 
-
+<!--
 <aside class="warning">Add DDHOOD_W DHOOD_U. Can be extracted in a GIST or somhere else, Check MAGN availability, pricing availability ?</aside>
+-->
