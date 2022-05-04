@@ -1,6 +1,6 @@
 # Introduction
 
-The Teezily+ API v2 enables to programmatically view the product catalog, get a single order info and complete orders to our print od demand service.
+The Teezily+ API v2 enables to programmatically view the product catalog, get a single order info and complete orders to our print on demand service.
 
 Requests are made using standard `GET`, `PUT` and `POST`. All responses are JSON.
 
