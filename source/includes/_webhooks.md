@@ -4,6 +4,12 @@ Webhooks allow your system to receive notifications about certain events.
 
 When an event occurs, the Teezily server will make a POST request to your defined URL containing a JSON object in the request body. Your server has to respond with HTTP status 200 OK, otherwise the request will be retried 12 times in increasing intervals (after 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 and 2048 minutes).
 
+## Creating a webhook
+
+Webhook URL and secret key are defined in the settings of your Shop API.
+
+If you already have a Shop API you can find it [here](/account/shops) otherwise create a new Shop API [here](/account/shop_api/new).
+
 ## Event list
 
 Object | Event | Description
@@ -56,11 +62,33 @@ The payload body signature is passed along with each request in the headers as X
 
 Next, compute a request body hash using your API key, and ensure that the hash from Teezily matches. Teezily uses an HMAC hexdigest to compute the hash. Always use "constant time" string comparisons, which renders it safe from certain timing attacks against regular equality operators.
 
-## Creating you webhooks
+Ruby on Rails example:
 
-Webhook URL and secret key are defined in the settings of your Shop API.
+```ruby
+# The raw payload in the request body from Teezily
+# ex: {"message":"test content"}
+request_body = request.raw_post
 
-If you already have a Shop API you can find it [here](/account/shops/new) otherwise create a new Shop API [here](/account/shop_api_/new).
+# The signature in the `X-Tzy-Signature` header
+# ex: sha256=3a0185ce8cc75387bc45dec59e4e119f8ba26823e10c0f60ba7522f001bf1627
+request_signature = request.headers['X-Tzy-Signature']
+
+# Your secret key
+# You have set it with your ShopAPI callback URL in T4B application
+your_secret = 'secret'
+
+# Compute digest data
+your_digest = OpenSSL::HMAC.hexdigest('sha256', your_secret, request_body)
+
+# Prefix the digest to build your own signature
+your_signature = "sha256=#{your_digest}"
+
+# Compare with "constant time" string comparisons fonction:
+# It should be true otherwise the request doesn't come from Teezily
+Rack::Utils.secure_compare(request_signature, your_signature)
+```
+
+Where `[SECRET_KEY]` is your secret key.
 
 
 <!---

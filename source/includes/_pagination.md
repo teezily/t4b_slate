@@ -4,5 +4,5 @@ All endpoints allowing to fetch multiple results accept the pagination parameter
 
 Parameter |  Type | Description
 --------- |  ---- | -----------
-page | Integer | A page number within the paginated result set
-limit | Integer | Number of results per page (between 1 and 100)
+page | Integer | A page number within the paginated result set (1 by default)
+limit | Integer | Number of results per page (between 1 and 100, 25 by default)
