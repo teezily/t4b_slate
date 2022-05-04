@@ -173,10 +173,10 @@ external_reference | No| String | Your Order ID: O-xxx. Usefull to track orders.
 email | Yes | String | Buyer's e-mail
 status | No | String | Fulfillment internal status. do not submit this parameter for creation
 address | **Yes** | Object | An [Address](./#address) Object. The API will attempt to verify the address before accepting order
-retail | No | Object | A [Retail](./#retail) object for invoicing
 line_items | **Yes** | Array | An array of [Line Item](./#line-item) Object
 
 <!-- shipping_method | No | String | Can be `standard` or `tracking` -->
+<!-- retail | No | Object | A [Retail](./#retail) object for invoicing -->
 
 ### HTTP Response
 Returns an [Order](./#order) object
@@ -221,24 +221,24 @@ position | No | String | Defaults to `auto` (more positional values coming soon)
 <!-- y | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design -->
 <!-- scale | No | String | When using `manual`. Value ranges from `0` to `100` -->
 
-### Retail
+<!-- ### Retail -->
 
-Retail costs that are to be displayed on the packing slip for international shipments. Retail costs are used only if every `line_item` in order contains the `retail_price` attribute.
+<!-- Retail costs that are to be displayed on the packing slip for international shipments. Retail costs are used only if every `line_item` in order contains the `retail_price` attribute. -->
+<!--  -->
+<!-- Parameter | Required | Type | Description -->
+<!-- --------- | -------- | ---- | ----------- -->
+<!-- vat_number | **Yes** | String | -->
+<!-- vat_currency | **Yes** | String | An [ISO 4217](https://www.wikipedia.org/wiki/ISO_4217) string representing the currency associated with your VAT number if you specify it -->
+<!-- currency | **Yes** | String | An [ISO 4217](https://www.wikipedia.org/wiki/ISO_4217) string representing the currency. Used if VAT is provided so we can generate an invoice for you -->
+<!-- shipping | **Yes** | String | Shipping price -->
+<!-- handling | **Yes** | String | Handling price -->
+<!-- discount | **Yes** | String | Discount price -->
+<!-- total | **Yes** | String | Total price -->
+<!-- tax | **Yes** |  String | Tax price -->
 
-Parameter | Required | Type | Description
---------- | -------- | ---- | -----------
-vat_number | **Yes** | String |
-vat_currency | **Yes** | String | An [ISO 4217](https://www.wikipedia.org/wiki/ISO_4217) string representing the currency associated with your VAT number if you specify it
-currency | **Yes** | String | An [ISO 4217](https://www.wikipedia.org/wiki/ISO_4217) string representing the currency. Used if VAT is provided so we can generate an invoice for you
-shipping | **Yes** | String | Shipping price
-handling | **Yes** | String | Handling price
-discount | **Yes** | String | Discount price
-total | **Yes** | String | Total price
-tax | **Yes** |  String | Tax price
-
-<aside class="warning">
-`total_price` must equal `line_items.retail_price` + `shipping_price` + `discount_price` + `handling_price`
-</aside>
+<!-- <aside class="warning"> -->
+<!-- `total_price` must equal `line_items.retail_price` + `shipping_price` + `discount_price` + `handling_price` -->
+<!-- </aside> -->
 
 ## Get a single order
 
