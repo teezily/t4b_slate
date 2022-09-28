@@ -15,9 +15,7 @@ If you already have a Shop API you can find it [here](/account/shops) otherwise 
 Object | Event | Description
 ------ | ----- | -----------
 Order | order_status_updated | Order status updated
-Order | tracking_added | Order tracking added (coming soon)
-Order | tracking_updated | Order tracking added (coming soon)
-Order | tracking_deleted | Order tracking deleted (coming soon)
+Order | tracking_added | Order tracking added
 
 ### HTTP Request
 
