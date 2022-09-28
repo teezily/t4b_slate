@@ -320,6 +320,13 @@ puts response.read_body
       "variant_reference": "TSRN_U_IGREEN_L",
       "quantity": 2
     }
+  ],
+  "tracking": [
+    {
+      "carrier": "SPU",
+      "number": "ABC12456",
+      "url": "https://example.org/tracking/ABC12456"
+    }
   ]
 }
 ```
@@ -408,6 +415,13 @@ puts response.read_body
           "external_reference": "I7366",
           "variant_reference": "TSRN_U_IGREEN_L",
           "quantity": 2
+        }
+      ],
+      "tracking": [
+        {
+          "carrier": "SPU",
+          "number": "ABC12456",
+          "url": "https://example.org/tracking/ABC12456"
         }
       ]
     },
