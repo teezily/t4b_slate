@@ -137,6 +137,7 @@ puts response.read_body
 {
   "id": 152,
   "external_reference": "C9759",
+  "shipping_method": "tracking",
   "email": "orval_jerde@ko.org",
   "status": "pending",
   "address": {
