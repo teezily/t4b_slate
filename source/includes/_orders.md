@@ -428,9 +428,9 @@ puts response.read_body
     {
       "id": 1,
       "external_reference": "C9346",
-      "status": "pending",
       "shipping_method": "tracking",
       "email": "hobert@zemlakherzog.name",
+      "status": "pending",
       "address": {
         "first_name": "Nellie",
         "last_name": "Stoltenberg",
