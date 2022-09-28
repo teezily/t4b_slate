@@ -171,9 +171,23 @@ Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 external_reference | No| String | Your Order ID: O-xxx. Usefull to track orders. The API will raise an error if you have any other non-canceled orders with the same `external_reference`
 email | Yes | String | Buyer's e-mail
-status | No | String | Fulfillment internal status. do not submit this parameter for creation
+status | No | String | Order's status. Do not submit this parameter for creation. [More](./#order-39-s-statuses)
 address | **Yes** | Object | An [Address](./#address) Object. The API will attempt to verify the address before accepting order
 line_items | **Yes** | Array | An array of [Line Item](./#line-item) Object
+
+### Order's statuses
+
+Status name | Description
+------------| -----------
+`pending` | Order's initial state
+`capturing` | Payment capture in progress
+`paid` | The order is paid
+`ongoing` | Order is in preparation
+`done` | Order is ready and shipping is in progress
+`canceled` | Order is canceled
+`error` | Errors preventing this order to process further
+`pause` | Order paused by an admin.
+`refund` | Order refunded
 
 <!-- shipping_method | No | String | Can be `standard` or `tracking` -->
 <!-- retail | No | Object | A [Retail](./#retail) object for invoicing -->
