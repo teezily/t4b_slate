@@ -1,10 +1,10 @@
 # Webhooks
 
-Webhooks allow your system to receive notifications about certain events.
+Webhooks enable your system to be notified of specific events.
 
-When an event occurs, the Teezily server will make a POST request to your defined URL containing a JSON object in the request body. Your server has to respond with HTTP status 200 OK, otherwise the request will be retried 12 times in increasing intervals (after 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 and 2048 minutes).
+When an event occurs, Teezily's server will send a POST request to the URL specified by you, which will include a JSON object in the request body (referred as payload). Your server needs to give a response of HTTP status 200 OK, otherwise Teezily's server will try again 12 times with an increasing time gap between each retry (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 and 2048 minutes)
 
-## Creating a webhook
+## Configuring Webhooks
 
 Webhook URL and secret key are defined in the settings of your Shop API.
 
@@ -34,6 +34,26 @@ data | String | The latest data of the object. This data matches the same format
 
 <!-- event.user | String | Who triggered the event. ("<email>" | "Dreamship Staff" | "System") -->
 
+## Payload Example
+
+Example of request payload (POST) sent by Teezily Plus to your configured endpoint
+
+```json
+{
+   "event":{
+      "uuid":"cd4aee39-cd94-437a-9da7-6f7a4dd21b0e",
+      "object_id":694,
+      "object_type":"Order",
+      "action":"order_status_updated",
+      "message":"The status of the order has changed.",
+      "timestamp":"2022-11-23T14:55:26.162Z"
+   },
+   "data":{
+      "state":"paid"
+   }
+}
+```
+
 ## Securing your Webhooks
 
 Once your server is configured to receive payloads, it'll listen for any payload sent to the endpoint you configured. For security reasons, you probably want to limit requests to those coming from Teezily.
@@ -60,9 +80,19 @@ The payload body signature is passed along with each request in the headers as X
 
 Next, compute a request body hash using your API key, and ensure that the hash from Teezily matches. Teezily uses an HMAC hexdigest to compute the hash. Always use "constant time" string comparisons, which renders it safe from certain timing attacks against regular equality operators.
 
-Ruby on Rails example:
+
+```shell
+# Code example only available on Ruby tab
+```
+
+```python
+# Code example only available on Ruby tab
+```
+
 
 ```ruby
+# Ruby on Rails example
+
 # The raw payload in the request body from Teezily
 # ex: {"message":"test content"}
 request_body = request.raw_post
