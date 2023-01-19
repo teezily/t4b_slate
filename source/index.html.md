@@ -2,9 +2,9 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - python
+  - shell: cURL
   - ruby
+  - python
 
 toc_footers:
   - <a href='https://plus.teezily.com'>Sign up to create an Shop API</a>
