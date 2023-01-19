@@ -19,7 +19,6 @@ includes:
   - rate_limits
   - status_codes
   - catalog
-  # - example
 
 search: true
 
