@@ -321,7 +321,7 @@ puts response.read_body
       "quantity": 2
     }
   ],
-  "tracking": [
+  "trackings": [
     {
       "carrier": "SPU",
       "number": "ABC12456",
@@ -417,7 +417,7 @@ puts response.read_body
           "quantity": 2
         }
       ],
-      "tracking": [
+      "trackings": [
         {
           "carrier": "SPU",
           "number": "ABC12456",
