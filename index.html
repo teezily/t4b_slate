@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta
             name="description"
-            content="Documentation for the Kittn API"
+            content="Documentation for Teezily Plus API"
         >
     <title>API Reference</title>
 
@@ -295,7 +295,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -303,12 +303,11 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <img src="images/logo-83824efc.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="shell">cURL</a>
               <a href="#" data-language-name="ruby">ruby</a>
               <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -322,223 +321,1364 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#catalog-products" class="toc-h1 toc-link" data-title="Catalog Products">Catalog Products</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#get-all-products-and-variants" class="toc-h2 toc-link" data-title="Get all Products and Variants">Get all Products and Variants</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-single-order" class="toc-h2 toc-link" data-title="Get a single order">Get a single order</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-orders" class="toc-h2 toc-link" data-title="Get all orders">Get all orders</a>
+                  </li>
+                  <li>
+                    <a href="#fulfill-an-order" class="toc-h2 toc-link" data-title="Fulfill an order">Fulfill an order</a>
+                  </li>
+                  <li>
+                    <a href="#cancel-an-order" class="toc-h2 toc-link" data-title="Cancel an order">Cancel an order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#configuring-webhooks" class="toc-h2 toc-link" data-title="Configuring Webhooks">Configuring Webhooks</a>
+                  </li>
+                  <li>
+                    <a href="#event-list" class="toc-h2 toc-link" data-title="Event list">Event list</a>
+                  </li>
+                  <li>
+                    <a href="#payload-example" class="toc-h2 toc-link" data-title="Payload Example">Payload Example</a>
+                  </li>
+                  <li>
+                    <a href="#securing-your-webhooks" class="toc-h2 toc-link" data-title="Securing your Webhooks">Securing your Webhooks</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#pagination" class="toc-h1 toc-link" data-title="Pagination">Pagination</a>
+          </li>
+          <li>
+            <a href="#rate-limits" class="toc-h1 toc-link" data-title="Rate limits">Rate limits</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#response-header" class="toc-h2 toc-link" data-title="Response header">Response header</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#status-codes" class="toc-h1 toc-link" data-title="Status codes">Status codes</a>
+          </li>
+          <li>
+            <a href="#design-specification" class="toc-h1 toc-link" data-title="Design specification">Design specification</a>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://plus.teezily.com'>Sign up to create an Shop API</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>The Teezily+ API v2 enables to programmatically view the product catalog, get a single order info and complete orders to our print on demand service.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Requests are made using standard <code>GET</code>, <code>PUT</code> and <code>POST</code>. All responses are JSON.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>Once you signed up, you will be provided with an API key.</p>
 <h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>The API expects for the key to be included in all requests to the server in a header that looks
+like the following:</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p><code>Authorization: Bearer [API_KEY]</code></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>If you already have a Shop API you can find its key in its <a href="/account/shops">settings</a> otherwise create a new Shop API <a href="/account/shop_api/new">here</a>.</p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>[API_KEY]</code> with the key of your Shop API.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='catalog-products'>Catalog Products</h1><h2 id='get-all-products-and-variants'>Get all Products and Variants</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://plus.teezily.com/api/v2/catalog/products'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"plus.teezily.com"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v2/catalog/products"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://plus.teezily.com/api/v2/catalog/products"</span><span class="p">)</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/json"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">156</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSRN_U"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"round neck t-shirt unisex"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.org/products/1/preview.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">135</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSRN_U_DHEATHERGREY_XXL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"round neck t-shirt unisex dark heather grey XXL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dark heather grey"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXL"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">134</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSRN_U_DHEATHERGREY_XL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"round neck t-shirt unisex dark heather grey XL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dark heather grey"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">285</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSVN_U"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v-neck t-shirt unisex"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.org/products/1/preview.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">165</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSVN_U_WHITE_XXL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v-neck t-shirt unisex white XXL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"white"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXL"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">164</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSVN_U_WHITE_XL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v-neck t-shirt unisex white XL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"white"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
+<p>This endpoint retrieves Products and their associated Variants.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p><code>GET https://plus.teezily.com/api/v2/catalog/products</code></p>
+
+<p>Available parameters, in addition to <a href="./#pagination">pagination</a>:</p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Required</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>name</td>
+<td>No</td>
+<td>String</td>
+<td>Filter by name</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>reference</td>
+<td>No</td>
+<td>String</td>
+<td>Filter by reference</td>
+</tr>
+</tbody></table>
+<h3 id='http-response'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>results</td>
+<td>Array</td>
+<td>An array of <a href="./#product">Products</a></td>
+</tr>
+<tr>
+<td>count</td>
+<td>Integer</td>
+<td>Number of results</td>
+</tr>
+</tbody></table>
+<h3 id='product'>Product</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>The product id</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>String</td>
+<td>The product reference</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>The product name</td>
+</tr>
+<tr>
+<td>image</td>
+<td>String</td>
+<td>The product image</td>
+</tr>
+<tr>
+<td>variants</td>
+<td>Array</td>
+<td>An array of <a href="./#variant">Variants</a></td>
+</tr>
+</tbody></table>
+<h3 id='variant'>Variant</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>The variant id</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>String</td>
+<td>The variant reference</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>The variant name</td>
+</tr>
+<tr>
+<td>color</td>
+<td>String</td>
+<td>The variant color</td>
+</tr>
+<tr>
+<td>size</td>
+<td>String</td>
+<td>The variant size</td>
 </tr>
 </tbody></table>
 
+<!--
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Mutable variant ID ? filter one att ? add count ? Price currency ? rename limit to page_size / page_limit ?
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+-->
+<h1 id='orders'>Orders</h1><h2 id='create-an-order'>Create an order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://plus.teezily.com/api/v2/orders'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+  "external_reference": "C9759",
+  "email": "orval_jerde@ko.org",
+  "address": {
+    "first_name": "Shalon",
+    "last_name": "Kihn",
+    "company": "Schaefer, Daugherty and Tillman",
+    "street1": "Leonardo Garden",
+    "street2": "",
+    "city": "North Kory",
+    "postcode": "80802-1677",
+    "state": "NY",
+    "country_code": "US",
+    "phone": "0102030406"
+  },
+  "line_items": [
+    {
+      "external_reference": "I7366",
+      "variant_reference": "TSRN_U_IGREEN_L",
+      "quantity": 2,
+      "designs": [
+        {
+          "key": "front",
+          "url": "http://example.org/front_preview.png"
+        }
+      ]
+    }
+  ]
+}
+'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"plus.teezily.com"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
+  <span class="s">"email"</span><span class="p">:</span> <span class="s">"orval_jerde@ko.org"</span><span class="p">,</span>
+  <span class="s">"external_reference"</span><span class="p">:</span> <span class="s">"C9759"</span><span class="p">,</span>
+  <span class="s">"address"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">"first_name"</span><span class="p">:</span> <span class="s">"Shalon"</span><span class="p">,</span>
+    <span class="s">"last_name"</span><span class="p">:</span> <span class="s">"Kihn"</span><span class="p">,</span>
+    <span class="s">"company"</span><span class="p">:</span> <span class="s">"Schaefer, Daugherty and Tillman"</span><span class="p">,</span>
+    <span class="s">"street1"</span><span class="p">:</span> <span class="s">"Leonardo Garden"</span><span class="p">,</span>
+    <span class="s">"street2"</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span>
+    <span class="s">"city"</span><span class="p">:</span> <span class="s">"North Kory"</span><span class="p">,</span>
+    <span class="s">"postcode"</span><span class="p">:</span> <span class="s">"80802-1677"</span><span class="p">,</span>
+    <span class="s">"state"</span><span class="p">:</span> <span class="s">"NY"</span><span class="p">,</span>
+    <span class="s">"country_code"</span><span class="p">:</span> <span class="s">"US"</span><span class="p">,</span>
+    <span class="s">"phone"</span><span class="p">:</span> <span class="s">"0102030406"</span>
+  <span class="p">},</span>
+  <span class="s">"line_items"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">"external_reference"</span><span class="p">:</span> <span class="s">"I7366"</span><span class="p">,</span>
+      <span class="s">"variant_reference"</span><span class="p">:</span> <span class="s">"TSRN_U_IGREEN_L"</span><span class="p">,</span>
+      <span class="s">"quantity"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s">"designs"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s">"key"</span><span class="p">:</span> <span class="s">"front"</span><span class="p">,</span>
+          <span class="s">"url"</span><span class="p">:</span> <span class="s">"http://example.org/front_preview.png"</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">})</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span><span class="p">,</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/api/v2/orders"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"json"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://plus.teezily.com/api/v2/orders"</span><span class="p">)</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/json"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/json"</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">dump</span><span class="p">({</span>
+  <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"orval_jerde@ko.org"</span><span class="p">,</span>
+  <span class="s2">"external_reference"</span><span class="p">:</span> <span class="s2">"C9759"</span><span class="p">,</span>
+  <span class="s2">"address"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"first_name"</span><span class="p">:</span> <span class="s2">"Shalon"</span><span class="p">,</span>
+    <span class="s2">"last_name"</span><span class="p">:</span> <span class="s2">"Kihn"</span><span class="p">,</span>
+    <span class="s2">"company"</span><span class="p">:</span> <span class="s2">"Schaefer, Daugherty and Tillman"</span><span class="p">,</span>
+    <span class="s2">"street1"</span><span class="p">:</span> <span class="s2">"Leonardo Garden"</span><span class="p">,</span>
+    <span class="s2">"street2"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="s2">"city"</span><span class="p">:</span> <span class="s2">"North Kory"</span><span class="p">,</span>
+    <span class="s2">"postcode"</span><span class="p">:</span> <span class="s2">"80802-1677"</span><span class="p">,</span>
+    <span class="s2">"state"</span><span class="p">:</span> <span class="s2">"NY"</span><span class="p">,</span>
+    <span class="s2">"country_code"</span><span class="p">:</span> <span class="s2">"US"</span><span class="p">,</span>
+    <span class="s2">"phone"</span><span class="p">:</span> <span class="s2">"0102030406"</span>
+  <span class="p">},</span>
+  <span class="s2">"line_items"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"external_reference"</span><span class="p">:</span> <span class="s2">"I7366"</span><span class="p">,</span>
+      <span class="s2">"variant_reference"</span><span class="p">:</span> <span class="s2">"TSRN_U_IGREEN_L"</span><span class="p">,</span>
+      <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">"retail_price"</span><span class="p">:</span> <span class="s2">"39.0"</span><span class="p">,</span>
+      <span class="s2">"designs"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">"key"</span><span class="p">:</span> <span class="s2">"front"</span><span class="p">,</span>
+          <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://example.org/front_preview.png"</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">152</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"external_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C9759"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shipping_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tracking"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orval_jerde@ko.org"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shalon"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kihn"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schaefer, Daugherty and Tillman"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leonardo Garden"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"street2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"North Kory"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80802-1677"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0102030406"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"external_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I7366"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"variant_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSRN_U_IGREEN_L"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://plus.teezily.com/api/v2/orders</code></p>
+<h3 id='order'>Order</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>external_reference</td>
+<td>No</td>
+<td>String</td>
+<td>Your Order ID: O-xxx. Usefull to track orders. The API will raise an error if you have any other non-canceled orders with the same <code>external_reference</code></td>
+</tr>
+<tr>
+<td>email</td>
+<td>Yes</td>
+<td>String</td>
+<td>Buyer&#39;s e-mail</td>
+</tr>
+<tr>
+<td>status</td>
+<td>No</td>
+<td>String</td>
+<td>Order&#39;s status. Do not submit this parameter for creation. <a href="./#order-39-s-statuses">More</a></td>
+</tr>
+<tr>
+<td>address</td>
+<td><strong>Yes</strong></td>
+<td>Object</td>
+<td>An <a href="./#address">Address</a> Object. The API will attempt to verify the address before accepting order</td>
+</tr>
+<tr>
+<td>line_items</td>
+<td><strong>Yes</strong></td>
+<td>Array</td>
+<td>An array of <a href="./#line-item">Line Item</a> Object</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h3 id='order-39-s-statuses'>Order&#39;s statuses</h3>
+<table><thead>
+<tr>
+<th>Status name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>pending</code></td>
+<td>Order&#39;s initial state</td>
+</tr>
+<tr>
+<td><code>capturing</code></td>
+<td>Payment capture in progress</td>
+</tr>
+<tr>
+<td><code>paid</code></td>
+<td>The order is paid</td>
+</tr>
+<tr>
+<td><code>ongoing</code></td>
+<td>Order is in preparation</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Order is ready and shipping is in progress</td>
+</tr>
+<tr>
+<td><code>canceled</code></td>
+<td>Order is canceled</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>Errors preventing this order to process further</td>
+</tr>
+<tr>
+<td><code>pause</code></td>
+<td>Order paused by an admin.</td>
+</tr>
+<tr>
+<td><code>refund</code></td>
+<td>Order refunded</td>
+</tr>
+</tbody></table>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<!-- shipping_method | No | String | Can be `standard` or `tracking` -->
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<!-- retail | No | Object | A [Retail](./#retail) object for invoicing -->
+<h3 id='http-response'>HTTP Response</h3>
+<p>Returns an <a href="./#order">Order</a> object</p>
+<h3 id='address'>Address</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>last_name</td>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>company</td>
+<td>No</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>phone</td>
+<td>No</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>street1</td>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>street2</td>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>If not present put an empty string</td>
+</tr>
+<tr>
+<td>city</td>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>postcode</td>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>Some countries do not require postcodes, in that case put an empty string</td>
+</tr>
+<tr>
+<td>state</td>
+<td>No</td>
+<td>String</td>
+<td>Some countries do not require state codes, if it is the case the API will raise an error</td>
+</tr>
+<tr>
+<td>country_code</td>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>Formatted as ISO 3166-1 two-letter</td>
+</tr>
+<tr>
+<td>skip_verified_delivery</td>
+<td>No</td>
+<td>Boolean</td>
+<td>Skip address delivery verification</td>
+</tr>
+</tbody></table>
+<h3 id='line-item'>Line Item</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>external_reference</td>
+<td>No</td>
+<td>String</td>
+<td>Your unique line item ID. Usefull to track line items. The API will raise an error if you have any other non-canceled line items with the same <code>external_reference</code></td>
+</tr>
+<tr>
+<td>variant_reference</td>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>The variant reference, see the <a href="./#product">Product</a> endpoint</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td><strong>Yes</strong></td>
+<td>Integer</td>
+<td></td>
+</tr>
+<tr>
+<td>designs</td>
+<td><strong>Yes</strong></td>
+<td>Array</td>
+<td>An array of <a href="./#design">Design</a> object</td>
+</tr>
+<tr>
+<td>retail_price</td>
+<td>No</td>
+<td>String</td>
+<td>Value of single item as purchased from the end customer. Used if VAT is provided so we can generate an invoice for you</td>
+</tr>
+</tbody></table>
+<h3 id='design'>Design</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>key</td>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>Can be <code>front</code>, <code>back</code>, ... see our <a href="./#design-specification">Design specification</a> <code>Side key</code> column</td>
+</tr>
+<tr>
+<td>url</td>
+<td>No</td>
+<td>String</td>
+<td>The url of the production design. Either <code>url</code> or <code>file</code> must be specified</td>
+</tr>
+<tr>
+<td>file</td>
+<td>No</td>
+<td>File</td>
+<td>If you wish to submit your payload in <code>multipart/form-data</code> and attach directly the file in it. Either <code>url</code> or <code>file</code> must be specified</td>
+</tr>
+<tr>
+<td>position</td>
+<td>No</td>
+<td>String</td>
+<td>Defaults to <code>auto</code> (more positional values coming soon)</td>
+</tr>
+</tbody></table>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<!-- position | No | String | Defaults to `auto`. Used to align the artwork within print area. Valid values are `top_left`, `top`, `top_right`, `center_left`, `center`, `center_right`, `bottom_left`, `bottom`, `bottom_right`, `manual`. Using `auto` will adjust your design the best way possible given the product, it is recommended you use this setting. -->
+
+<!-- x | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design -->
+
+<!-- y | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design -->
+
+<!-- scale | No | String | When using `manual`. Value ranges from `0` to `100` -->
+
+<!-- ### Retail -->
+
+<!-- Retail costs that are to be displayed on the packing slip for international shipments. Retail costs are used only if every `line_item` in order contains the `retail_price` attribute. -->
+
+<!--  -->
+
+<!-- Parameter | Required | Type | Description -->
+
+<!-- --------- | -------- | ---- | ----------- -->
+
+<!-- vat_number | **Yes** | String | -->
+
+<!-- vat_currency | **Yes** | String | An [ISO 4217](https://www.wikipedia.org/wiki/ISO_4217) string representing the currency associated with your VAT number if you specify it -->
+
+<!-- currency | **Yes** | String | An [ISO 4217](https://www.wikipedia.org/wiki/ISO_4217) string representing the currency. Used if VAT is provided so we can generate an invoice for you -->
+
+<!-- shipping | **Yes** | String | Shipping price -->
+
+<!-- handling | **Yes** | String | Handling price -->
+
+<!-- discount | **Yes** | String | Discount price -->
+
+<!-- total | **Yes** | String | Total price -->
+
+<!-- tax | **Yes** |  String | Tax price -->
+
+<!-- <aside class="warning"> -->
+
+<!-- `total_price` must equal `line_items.retail_price` + `shipping_price` + `discount_price` + `handling_price` -->
+
+<!-- </aside> -->
+<h2 id='get-a-single-order'>Get a single order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://plus.teezily.com/api/v2/orders/152'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"plus.teezily.com"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v2/orders/152"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://plus.teezily.com/api/v2/orders/152"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/json"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">152</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"external_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C9759"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shipping_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tracking"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orval_jerde@ko.org"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shalon"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kihn"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schaefer, Daugherty and Tillman"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leonardo Garden"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"street2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"North Kory"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80802-1677"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0102030406"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"external_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I7366"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"variant_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSRN_U_IGREEN_L"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"carrier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPU"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC12456"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.org/tracking/ABC12456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://plus.teezily.com/api/v2/orders/{id}</code></p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>id</td>
+<td>String</td>
+<td><strong>Yes</strong></td>
+<td>The order ID</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<p><code>GET https://plus.teezily.com/api/v2/orders?external_reference={id}</code></p>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td><strong>Yes</strong></td>
+<td>The external order reference</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-2'>HTTP Response</h3>
+<p>Returns an <a href="./#order">Order</a> object</p>
+<h2 id='get-all-orders'>Get all orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://plus.teezily.com/api/v2/orders'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"plus.teezily.com"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v2/orders"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://plus.teezily.com/api/v2/orders"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/json"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">152</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"external_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C9759"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"shipping_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tracking"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orval_jerde@ko.org"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shalon"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kihn"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schaefer, Daugherty and Tillman"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leonardo Garden"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"North Kory"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80802-1677"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0102030406"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"external_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I7366"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"variant_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSRN_U_IGREEN_L"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"carrier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPU"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC12456"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.org/tracking/ABC12456"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"external_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C9346"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"shipping_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tracking"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hobert@zemlakherzog.name"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nellie"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stoltenberg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lueilwitz, Beier and Olson"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elisha Wall"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuhicfort"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23988-4408"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WI"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0102030406"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"external_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I4360"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"variant_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSRN_U_IGREEN_L"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://plus.teezily.com/api/v2/orders</code></p>
+
+<p>Available parameters, in addition to <a href="./#pagination">pagination</a>:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Filter by status</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-3'>HTTP Response</h3>
+<p>Returns all <a href="./#order">Orders</a> objects paginated</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>results</td>
+<td>Array</td>
+<td><a href="./#order">Orders</a> objects</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Integer</td>
+<td>Number of results</td>
+</tr>
+</tbody></table>
+<h2 id='fulfill-an-order'>Fulfill an order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://plus.teezily.com/api/v2/orders/152/fulfill'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"plus.teezily.com"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="s">"/api/v2/orders/152/fulfill"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+
+<span class="n">require</span> <span class="s">"uri"</span>
+<span class="n">require</span> <span class="s">"net/http"</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://plus.teezily.com/api/v2/orders/152/fulfill"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Put</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/json"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div>
+<blockquote>
+<p>No content response</p>
+</blockquote>
+
+<p>Once an order is created, in order to send it to production you need to use the fulfill API method.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT https://plus.teezily.com/api/v2/orders/{id}/fulfill</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td><strong>Yes</strong></td>
+<td>The order ID</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-4'>HTTP Response</h3>
+<p>No content.</p>
+<h2 id='cancel-an-order'>Cancel an order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://plus.teezily.com/api/v2/orders/152/cancel'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"plus.teezily.com"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="s">"/api/v2/orders/152/fulfill"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+
+<span class="n">require</span> <span class="s">"uri"</span>
+<span class="n">require</span> <span class="s">"net/http"</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://plus.teezily.com/api/v2/orders/152/cancel"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Put</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/json"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Bearer d9119ab7-38df-4b05-ba8f-f374c022fff9"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div>
+<blockquote>
+<p>No content response</p>
+</blockquote>
+
+<p>If an order is not yet produced you might still be able to cancel it using the following endpoint.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>PUT https://plus.teezily.com/api/v2/orders/{id}/cancel</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>The order ID</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-5'>HTTP Response</h3>
+<p>No content.</p>
+
+<!---
+Returns an [Order](./#order) object with the following fields appended to it
+
+Parameter |  Type | Description
+--------- |  ---- | -----------
+status | String | Current order status `unfulfilled` `fulfilled` `shipped`
+--->
+
+<!--
+<aside class="warning">Do we have address check ? current order statuses ? total computations see with charles ?, order => state/postcode weirdy ? cancel only http status ? replace PUT by PATCH ? default shipping method ? Retail finishion ? eternal params ordering /id, top left scale 0 to 1 or 0 to 100, talk about printful mockup API => possibility to access printfile / mokcups ?</aside>
+-->
+<h1 id='webhooks'>Webhooks</h1>
+<p>Webhooks enable your system to be notified of specific events.</p>
+
+<p>When an event occurs, Teezily&#39;s server will send a POST request to the URL specified by you, which will include a JSON object in the request body (referred as payload). Your server needs to give a response of HTTP status 200 OK, otherwise Teezily&#39;s server will try again 12 times with an increasing time gap between each retry (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 and 2048 minutes)</p>
+<h2 id='configuring-webhooks'>Configuring Webhooks</h2>
+<p>Webhook URL and secret key are defined in the settings of your Shop API.</p>
+
+<p>If you already have a Shop API you can find it <a href="/account/shops">here</a> otherwise create a new Shop API <a href="/account/shop_api/new">here</a>.</p>
+<h2 id='event-list'>Event list</h2>
+<table><thead>
+<tr>
+<th>Object</th>
+<th>Event</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Order</td>
+<td>order_status_updated</td>
+<td>Order status updated</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>tracking_added</td>
+<td>Order tracking added</td>
+</tr>
+</tbody></table>
+<h3 id='http-request'>HTTP Request</h3>
+<!-- id | String | ID of the object being sent over.
+object | String | The type of object being sent: for now only `order` is implemented -->
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event.uuid</td>
+<td>String</td>
+<td>UUID of the event.</td>
+</tr>
+<tr>
+<td>event.object_id</td>
+<td>String</td>
+<td>ID of the event&#39;s object being sent over.</td>
+</tr>
+<tr>
+<td>event.object_type</td>
+<td>String</td>
+<td>the type event&#39;s object type being sent over.</td>
+</tr>
+<tr>
+<td>event.action</td>
+<td>String</td>
+<td>The name of the event.</td>
+</tr>
+<tr>
+<td>event.message</td>
+<td>String</td>
+<td>Human readable message of event.</td>
+</tr>
+<tr>
+<td>event.timestamp</td>
+<td>String</td>
+<td>When the event occured.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>String</td>
+<td>The latest data of the object. This data matches the same format as the <code>GET</code> requests.</td>
+</tr>
+</tbody></table>
+
+<!-- event.user | String | Who triggered the event. ("<email>" | "Dreamship Staff" | "System") -->
+<h2 id='payload-example'>Payload Example</h2>
+<p>Example of request payload (POST) sent by Teezily Plus to your configured endpoint</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"event"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="s2">"cd4aee39-cd94-437a-9da7-6f7a4dd21b0e"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"object_id"</span><span class="p">:</span><span class="mi">694</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"object_type"</span><span class="p">:</span><span class="s2">"Order"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"action"</span><span class="p">:</span><span class="s2">"order_status_updated"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"The status of the order has changed."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="s2">"2022-11-23T14:55:26.162Z"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"paid"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='securing-your-webhooks'>Securing your Webhooks</h2>
+<p>Once your server is configured to receive payloads, it&#39;ll listen for any payload sent to the endpoint you configured. For security reasons, you probably want to limit requests to those coming from Teezily.</p>
+
+<p>There are a few ways to go about this - for example, you could opt to whitelist requests from Teezily&#39;s IP address. An easy method is to and validate the information with a shared secret.</p>
+<h3 id='setting-your-shared-secret'>Setting your shared secret</h3>
+<p>You can generate the secret by running <code>openssl rand -hex 20</code>.</p>
+
+<p>When your secret token is set into your account, Teezily will use it to create a hash signature with each payload body. Teezily uses an HMAC hexdigest to compute the hash sha256 signature with your provided secret.</p>
+<h4 id='secret-example'>Secret example</h4>
+<p><code>b19a1922449421904e94c3e139616b2faebd9c9d</code></p>
+
+<p>The payload body signature is passed along with each request in the headers as X-Tzy-Signature. The signature format is: <code>sha256={digest}</code>.</p>
+<h4 id='signature-example'>Signature example</h4>
+<p><code>X-Tzy-Signature: sha256=c5e896be0dc286e8fe901d5dc1eae1422478475da21d64dfb4563c08e05ca12f</code></p>
+<h3 id='validating-payloads-from-teezily'>Validating payloads from Teezily</h3>
+<p>Next, compute a request body hash using your API key, and ensure that the hash from Teezily matches. Teezily uses an HMAC hexdigest to compute the hash. Always use &quot;constant time&quot; string comparisons, which renders it safe from certain timing attacks against regular equality operators.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Code example only available on Ruby tab</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Code example only available on Ruby tab
+</span></code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="c1"># Ruby on Rails example</span>
+
+<span class="c1"># The raw payload in the request body from Teezily</span>
+<span class="c1"># ex: {"message":"test content"}</span>
+<span class="n">request_body</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">raw_post</span>
+
+<span class="c1"># The signature in the `X-Tzy-Signature` header</span>
+<span class="c1"># ex: sha256=3a0185ce8cc75387bc45dec59e4e119f8ba26823e10c0f60ba7522f001bf1627</span>
+<span class="n">request_signature</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">headers</span><span class="p">[</span><span class="s1">'X-Tzy-Signature'</span><span class="p">]</span>
+
+<span class="c1"># Your secret key</span>
+<span class="c1"># You have set it with your ShopAPI callback URL in T4B application</span>
+<span class="n">your_secret</span> <span class="o">=</span> <span class="s1">'secret'</span>
+
+<span class="c1"># Compute digest data</span>
+<span class="n">your_digest</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">,</span> <span class="n">your_secret</span><span class="p">,</span> <span class="n">request_body</span><span class="p">)</span>
+
+<span class="c1"># Prefix the digest to build your own signature</span>
+<span class="n">your_signature</span> <span class="o">=</span> <span class="s2">"sha256=</span><span class="si">#{</span><span class="n">your_digest</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># Compare with "constant time" string comparisons fonction:</span>
+<span class="c1"># It should be true otherwise the request doesn't come from Teezily</span>
+<span class="no">Rack</span><span class="o">::</span><span class="no">Utils</span><span class="p">.</span><span class="nf">secure_compare</span><span class="p">(</span><span class="n">request_signature</span><span class="p">,</span> <span class="n">your_signature</span><span class="p">)</span>
+</code></pre></div>
+<p>Where <code>[SECRET_KEY]</code> is your secret key.</p>
+
+<!---
+
+Order |
+---------------- |
+order-created |
+order-deleted |
+order-reprinted |
+order-status-updated |
+order-details-updated |
+tracking-added |
+tracking-updated |
+tracking-deleted |
+print-file-added |
+print-file-removed |
+line-item-details-updated |
+line-item-added |
+line-item-removed |
+line-ticket-opened |
+line-ticket-closed |
+
+Product |
+----------------- |
+product-created |
+product-deleted |
+
+
+Item Variant |
+---------------------- |
+item-variant-availability-updated |
+item-variant-added |
+
+## Gearment
+
+All |
+--- |
+order_completed |
+order_canceled |
+tracking_updated |
+shipping_address_unverified |
+
+## Printify
+
+Shop events |
+-------------------- |
+shop:disconnected |
+
+Product events |
+----------------------- |
+product:deleted |
+product:publish:started |
+
+Order events |
+--------------------- |
+order:created |
+order:updated |
+order:sent-to-production |
+order:shipment:created |
+order:shipment:delivered |
+
+
+## Printful
+
+All |
+--- |
+Package shipped |
+Package returned |
+Order created |
+Order updated |
+Order failed |
+Order canceled |
+Product synced |
+Product updated |
+Stock updated |
+Order put hold |
+Order remove hold |
+
+
+--->
+
+<!--
+<aside class="warning">I don't see the utility of registering webhooks.... if a webhook URL is registered we should just push on it, how about packages split tracking ? should we push line item or for tracking</aside>
+-->
+<h1 id='pagination'>Pagination</h1>
+<p>All endpoints allowing to fetch multiple results accept the pagination parameter below:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>Integer</td>
+<td>A page number within the paginated result set (1 by default)</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>Number of results per page (between 1 and 100, 25 by default)</td>
+</tr>
+</tbody></table>
+<h1 id='rate-limits'>Rate limits</h1>
+<blockquote>
+<p>Once throttled the API will return the following JSON:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">errors:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="err">code:</span><span class="w"> </span><span class="s2">"RateLimitError"</span><span class="p">,</span><span class="w">
+      </span><span class="err">title:</span><span class="w"> </span><span class="s2">"Too Many Requests"</span><span class="p">,</span><span class="w">
+      </span><span class="err">detail:</span><span class="w"> </span><span class="s2">"Your requests exceeded the rate of 60 by period of 60 seconds."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The API enforces rate limits on the amount of requests that can be made. a 429 HTTP status code will be returned if throttled. Currently available rate is returned in response headers.</p>
+
+<table><thead>
+<tr>
+<th>Time period</th>
+<th>Call limit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1 minute</td>
+<td>60 calls</td>
+</tr>
+</tbody></table>
+<h3 id='response-header'>Response header</h3>
+<p><code>X-Tzy-Limit: 60</code></p>
+<h1 id='status-codes'>Status codes</h1>
+<p>The Teezily Plus API uses the following HTTP status codes:</p>
+
+<table><thead>
+<tr>
+<th>HTTP Status Code</th>
 <th>Meaning</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>200</td>
+<td>Ok</td>
+</tr>
+<tr>
+<td>204</td>
+<td>Ok -- No content</td>
+</tr>
 <tr>
 <td>400</td>
 <td>Bad Request -- Your request is invalid.</td>
@@ -549,15 +1689,15 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- The following ressource requested is forbidden.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The specified ressource could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to access a ressource with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
@@ -565,7 +1705,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>Gone -- The ressource requested has been removed from our servers.</td>
 </tr>
 <tr>
 <td>418</td>
@@ -573,7 +1713,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re requesting too many ressources! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -584,14 +1724,431 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
+<h1 id='design-specification'>Design specification</h1>
+<p>The Design specification catalog cointains our different products with their recommended printing specifcations, If your designs don&#39;t match the recommended width and height we will adapt it the best possible way.</p>
+
+<!-- Product reference | Name | Side key | Recommended design size
+----------------- | ---- | -------- | ----------------------- -->
+
+<table><thead>
+<tr>
+<th>Product reference</th>
+<th>Name</th>
+<th>Side key</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TSRN_U</td>
+<td>Round neck T-Shirt Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>TSRN_U</td>
+<td>Round neck T-Shirt Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>TSRN_W</td>
+<td>Round neck T-Shirt Woman</td>
+<td>front</td>
+</tr>
+<tr>
+<td>TSRN_W</td>
+<td>Round neck T-Shirt Woman</td>
+<td>back</td>
+</tr>
+<tr>
+<td>TSVN_U</td>
+<td>V-neck T-Shirt Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>TSVN_U</td>
+<td>V-neck T-Shirt Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>TSVN_W</td>
+<td>V-neck T-Shirt Woman</td>
+<td>front</td>
+</tr>
+<tr>
+<td>TSVN_W</td>
+<td>V-neck T-Shirt Woman</td>
+<td>back</td>
+</tr>
+<tr>
+<td>TSLS_U</td>
+<td>Long sleeved T-shirt Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>TSLS_U</td>
+<td>Long sleeved T-shirt Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>SWTR_U</td>
+<td>Sweatshirt Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>SWTR_U</td>
+<td>Sweatshirt Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>HOOD_U</td>
+<td>Hoodie Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>HOOD_U</td>
+<td>Hoodie Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>TSRN_K</td>
+<td>Kid T-Shirt</td>
+<td>front</td>
+</tr>
+<tr>
+<td>TSRN_K</td>
+<td>Kid T-Shirt</td>
+<td>back</td>
+</tr>
+<tr>
+<td>HOOD_K</td>
+<td>Kid Hoodie</td>
+<td>front</td>
+</tr>
+<tr>
+<td>HOOD_K</td>
+<td>Kid Hoodie</td>
+<td>back</td>
+</tr>
+<tr>
+<td>TKTP_U</td>
+<td>Tanktop Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>TKTP_U</td>
+<td>Tanktop Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>TKTP_W</td>
+<td>Tank top Woman</td>
+<td>front</td>
+</tr>
+<tr>
+<td>TKTP_W</td>
+<td>Tank top Woman</td>
+<td>back</td>
+</tr>
+<tr>
+<td>BODY_B</td>
+<td>Baby Onesies</td>
+<td>front</td>
+</tr>
+<tr>
+<td>BODY_B</td>
+<td>Baby Onesies</td>
+<td>back</td>
+</tr>
+<tr>
+<td>BODYLS_B</td>
+<td>Long Sleeved Baby Onesie</td>
+<td>front</td>
+</tr>
+<tr>
+<td>BODYLS_B</td>
+<td>Long Sleeved Baby Onesie</td>
+<td>back</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>OTSRN_U</td>
+<td>Organic Round Neck T-Shirt Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>OTSRN_U</td>
+<td>Organic Round Neck T-Shirt Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>OTSRN_W</td>
+<td>Organic Round Neck T-Shirt Woman</td>
+<td>front</td>
+</tr>
+<tr>
+<td>OTSRN_W</td>
+<td>Organic Round Neck T-Shirt Woman</td>
+<td>back</td>
+</tr>
+<tr>
+<td>OTSVN_U</td>
+<td>Organic V-Neck T-Shirt Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>OTSVN_U</td>
+<td>Organic V-Neck T-Shirt Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>OTSVN_W</td>
+<td>Organic V-Neck T-Shirt Woman</td>
+<td>front</td>
+</tr>
+<tr>
+<td>OTSVN_W</td>
+<td>Organic V-Neck T-Shirt Woman</td>
+<td>back</td>
+</tr>
+<tr>
+<td>OTSLS_U</td>
+<td>Organic Long Sleeved T-Shirt Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>OTSLS_U</td>
+<td>Organic Long Sleeved T-Shirt Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>OSWTR_U</td>
+<td>Organic Sweater Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>OSWTR_U</td>
+<td>Organic Sweater Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>OHOOD_U</td>
+<td>Organic Hoodie Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>OHOOD_U</td>
+<td>Organic Hoodie Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>PTSRN_U</td>
+<td>Premium Round Neck T-Shirt Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>PTSRN_U</td>
+<td>Premium Round Neck T-Shirt Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>PSWTR_U</td>
+<td>Premium Sweater Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>PSWTR_U</td>
+<td>Premium Sweater Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td>PHOOD_U</td>
+<td>Premium Hoodie Unisex</td>
+<td>front</td>
+</tr>
+<tr>
+<td>PHOOD_U</td>
+<td>Premium Hoodie Unisex</td>
+<td>back</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TOTE_U</td>
+<td>Tote Bag</td>
+<td>front</td>
+</tr>
+<tr>
+<td>TOTE_U</td>
+<td>Tote Bag</td>
+<td>back</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MUG_U</td>
+<td>Mug</td>
+<td>front</td>
+</tr>
+<tr>
+<td>BMUG_U</td>
+<td>15oz mug</td>
+<td>front</td>
+</tr>
+<tr>
+<td>BTTMUG_U</td>
+<td>15oz Two Tone Mug</td>
+<td>front</td>
+</tr>
+<tr>
+<td>LMUG_U</td>
+<td>Tall Mug</td>
+<td>front</td>
+</tr>
+<tr>
+<td>RMUG_U</td>
+<td>Colored Rim and Handle Mug</td>
+<td>front</td>
+</tr>
+<tr>
+<td>TTMUG_U</td>
+<td>Two-tone mug</td>
+<td>front</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DMAT3-2_U</td>
+<td>Doormat</td>
+<td>front</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>FLEEB_U</td>
+<td>Sherpa fleece blanket</td>
+<td>front</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>FMASK_U</td>
+<td>Face Mask</td>
+<td>front</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>IP5C_U</td>
+<td>iPhone 5 Case</td>
+<td>front</td>
+</tr>
+<tr>
+<td>IP5SC_U</td>
+<td>iPhone 5S Case</td>
+<td>front</td>
+</tr>
+<tr>
+<td>IP6C_U</td>
+<td>iPhone 6 Case</td>
+<td>front</td>
+</tr>
+<tr>
+<td>IP6PC_U</td>
+<td>iPhone 6 Plus Case</td>
+<td>front</td>
+</tr>
+<tr>
+<td>SGS5C_U</td>
+<td>Samsung Galaxy S5 Case</td>
+<td>front</td>
+</tr>
+<tr>
+<td>SGS6C_U</td>
+<td>Samsung Galaxy S6 Case</td>
+<td>front</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MIPICA2-1_U</td>
+<td>Microfiber Rectangle Pillow</td>
+<td>front</td>
+</tr>
+<tr>
+<td>SAPICA1-1_U</td>
+<td>Satin Square Pillow</td>
+<td>front</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>NECKL_R</td>
+<td>Round Pendant Necklace</td>
+<td>front</td>
+</tr>
+<tr>
+<td>NECKL_S</td>
+<td>Square Pendant Necklace</td>
+<td>front</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ORCE_H</td>
+<td>Heart Shaped Ornament</td>
+<td>front</td>
+</tr>
+<tr>
+<td>ORCE_R</td>
+<td>Round Shaped Ornament</td>
+<td>front</td>
+</tr>
+</tbody></table>
+
+<!--
+<aside class="warning">Add DDHOOD_W DHOOD_U. Can be extracted in a GIST or somhere else, Check MAGN availability, pricing availability ?</aside>
+-->
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="shell">cURL</a>
                 <a href="#" data-language-name="ruby">ruby</a>
                 <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
