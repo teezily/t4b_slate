@@ -4,11 +4,11 @@
 
 ```json
 {
-  errors: [
+  "errors": [
     {
-      code: "RateLimitError",
-      title: "Too Many Requests",
-      detail: "Your requests exceeded the rate of 60 by period of 60 seconds."
+      "code": "RateLimitError",
+      "title": "Too Many Requests",
+      "detail": "Your requests exceeded the rate of 60 by period of 60 seconds."
     }
   ]
 }

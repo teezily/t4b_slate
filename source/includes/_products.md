@@ -103,35 +103,35 @@ Available parameters, in addition to [pagination](./#pagination):
 
 Parameter | Required | Type | Description |
 --------- | -------- | ---- | ----------- |
-name | No | String | Filter by name
-reference | No | String | Filter by reference
+`name` | No | String | Filter by name
+`reference` | No | String | Filter by reference
 
 ### HTTP Response
 
 Parameter | Type | Description |
 --------- | ---- | ----------- |
-results | Array | An array of [Products](./#product) |
-count | Integer | Number of results
+`results` | Array | An array of [Products](./#product) |
+`count` | Integer | Number of results
 
 ### Product
 
 Parameter | Type | Description |
 --------- | ---- | ----------- |
-id | String | The product id
-reference | String | The product reference
-name | String | The product name
-image | String | The product image
-variants | Array | An array of [Variants](./#variant) |
+`id` | String | The product id
+`reference` | String | The product reference
+`name` | String | The product name
+`image` | String | The product image
+`variants` | Array | An array of [Variants](./#variant) |
 
 ### Variant
 
 Parameter | Type | Description |
 --------- | ---- | ----------- |
-id | String | The variant id
-reference | String | The variant reference
-name | String | The variant name
-color | String | The variant color
-size | String | The variant size
+`id` | String | The variant id
+`reference` | String | The variant reference
+`name` | String | The variant name
+`color` | String | The variant color
+`size` | String | The variant size
 
 <!--
 <aside class="success">

@@ -12,10 +12,12 @@ If you already have a Shop API you can find it [here](/account/shops) otherwise 
 
 ## Event list
 
-Object | Event | Description
------- | ----- | -----------
-Order | order_status_updated | Order status updated
-Order | tracking_added | Order tracking added
+Object  | Event | Description
+------- | ----- | -----------
+`Order` | order_status_updated | Order status updated
+`Order` | tracking_added | Order tracking added
+
+
 
 ### HTTP Request
 
@@ -24,23 +26,23 @@ object | String | The type of object being sent: for now only `order` is impleme
 
 Parameter | Type | Description
 --------- | ---- | -----------
-event.uuid | String | UUID of the event.
-event.object_id | String | ID of the event's object being sent over.
-event.object_type | String | the type event's object type being sent over.
-event.action | String | The name of the event.
-event.message | String | Human readable message of event.
-event.timestamp | String | When the event occured.
-data | String | The latest data of the object. This data matches the same format as the `GET` requests.
+`uuid` | String | UUID of the event.
+`object_id` | String | ID of the event's object being sent over.
+`object_type` | String | the type event's object type being sent over.
+`action` | String | The name of the event.
+`message` | String | Human readable message of event.
+`timestamp` | String | When the event occured.
+`data` | String | The latest data of the object. This data matches the same format as the `GET` requests.
 
-<!-- event.user | String | Who triggered the event. ("<email>" | "Dreamship Staff" | "System") -->
+## Payload Examples
 
-## Payload Example
+Example of request `JSON` payload (`POST`) sent by Teezily Plus to your configured endpoint:
 
-Example of request payload (POST) sent by Teezily Plus to your configured endpoint
+> Event Type: `order_status_updated`
 
 ```json
 {
-   "event":{
+   "event": {
       "uuid":"cd4aee39-cd94-437a-9da7-6f7a4dd21b0e",
       "object_id":694,
       "object_type":"Order",
@@ -48,8 +50,31 @@ Example of request payload (POST) sent by Teezily Plus to your configured endpoi
       "message":"The status of the order has changed.",
       "timestamp":"2022-11-23T14:55:26.162Z"
    },
-   "data":{
+   "data": {
       "state":"paid"
+   }
+}
+```
+
+> Event Type: `tracking_added`
+
+```json
+{
+   "event": {
+      "uuid":"b4033f23-816b-4b80-bca7-f60f1450b507",
+      "object_id":828,
+      "object_type":"Order",
+      "action":"tracking_added",
+      "message":"",
+      "timestamp":"2023-04-04T10:16:02.675Z"
+   },
+   "data": {
+      "carrier":"CHRONOPOST_EUROPE",
+      "tracking_url":"https//track.me/123",
+      "tracking_number":"123",
+      "line_item_refs": [
+        "your_line_item_external_reference1", "your_line_item_external_reference2"
+      ]
    }
 }
 ```

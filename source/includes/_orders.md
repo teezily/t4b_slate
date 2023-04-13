@@ -170,11 +170,12 @@ puts response.read_body
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-external_reference | No| String | Your Order ID: O-xxx. Usefull to track orders. The API will raise an error if you have any other non-canceled orders with the same `external_reference`
-email | Yes | String | Buyer's e-mail
-status | No | String | Order's status. Do not submit this parameter for creation. [More](./#order-39-s-statuses)
-address | **Yes** | Object | An [Address](./#address) Object. The API will attempt to verify the address before accepting order
-line_items | **Yes** | Array | An array of [Line Item](./#line-item) Object
+`external_reference` | No| String | Your Order ID: O-xxx. Usefull to track orders. The API will raise an error if you have any other non-canceled orders with the same `external_reference`
+`email` | Yes | String | Buyer's e-mail
+`status` | No | String | Order's status. Do not submit this parameter for creation. [More](./#order-39-s-statuses)
+`address` | **Yes** | Object | An [Address](./#address) Object. The API will attempt to verify the address before accepting order
+`line_items` | **Yes** | Array | An array of [Line Item](./#line-item) Object
+`trackings` | No | Array | Read only. An array of [Tracking](./#tracking-read-only) Object
 
 ### Order's statuses
 
@@ -200,36 +201,44 @@ Returns an [Order](./#order) object
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-first_name | **Yes** | String |
-last_name | **Yes** | String |
-company | No | String |
-phone | No | String |
-street1 | **Yes** | String |
-street2 | **Yes** | String | If not present put an empty string
-city | **Yes** | String |
-postcode | **Yes** | String | Some countries do not require postcodes, in that case put an empty string
-state | No | String | Some countries do not require state codes, if it is the case the API will raise an error
-country_code | **Yes** | String | Formatted as ISO 3166-1 two-letter
-skip_verified_delivery | No | Boolean | Skip address delivery verification
+`first_name` | **Yes** | String |
+`last_name` | **Yes** | String |
+`company` | No | String |
+`phone` | No | String |
+`street1` | **Yes** | String |
+`street2` | **Yes** | String | If not present put an empty string
+`city` | **Yes** | String |
+`postcode` | **Yes** | String | Some countries do not require postcodes, in that case put an empty string
+`state` | No | String | Some countries do not require state codes, if it is the case the API will raise an error
+`country_code` | **Yes** | String | Formatted as ISO 3166-1 two-letter
 
 ### Line Item
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-external_reference | No| String | Your unique line item ID. Usefull to track line items. The API will raise an error if you have any other non-canceled line items with the same `external_reference`
-variant_reference | **Yes** | String | The variant reference, see the [Product](./#product) endpoint
-quantity | **Yes** | Integer
-designs  | **Yes** | Array | An array of [Design](./#design) object
-retail_price | No | String | Value of single item as purchased from the end customer. Used if VAT is provided so we can generate an invoice for you
+`external_reference` | No| String | Your unique line item ID. Usefull to track line items. The API will raise an error if you have any other non-canceled line items with the same `external_reference`
+`variant_reference` | **Yes** | String | The variant reference, see the [Product](./#product) endpoint
+`quantity` | **Yes** | Integer
+`designs`  | **Yes** | Array | An array of [Design](./#design) object
+`retail_price` | No | String | Value of single item as purchased from the end customer. Used if VAT is provided so we can generate an invoice for you
+
+### Tracking (read only)
+
+Parameter   | Type     | Description                                                   |
+------------|----------|---------------------------------------------------------------|
+`carrier`     | string   | The carrier's name (e.g., SPU)                                |
+`number`      | string   | The tracking number (e.g., ABC12456)                          |
+`url`         | string   | The URL for tracking the package (e.g., https://example.org/tracking/ABC12456) |
+`line_item_refs` | array | An array of [Line Item's](./#line-item) `external_references` that the tracking is linked to. This information may be partial, missing or empty |
 
 ### Design
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-key | **Yes** | String | Can be `front`, `back`, ... see our [Design specification](./#design-specification) `Side key` column
-url | No | String | The url of the production design. Either `url` or `file` must be specified
-file | No | File | If you wish to submit your payload in `multipart/form-data` and attach directly the file in it. Either `url` or `file` must be specified
-position | No | String | Defaults to `auto` (more positional values coming soon)
+`key` | **Yes** | String | Can be `front`, `back`, ... see our [Design specification](./#design-specification) `Side key` column
+`url` | No | String | The url of the production design. Either `url` or `file` must be specified
+`file` | No | File | If you wish to submit your payload in `multipart/form-data` and attach directly the file in it. Either `url` or `file` must be specified
+`position` | No | String | Defaults to `auto` (more positional values coming soon)
 
 <!-- position | No | String | Defaults to `auto`. Used to align the artwork within print area. Valid values are `top_left`, `top`, `top_right`, `center_left`, `center`, `center_right`, `bottom_left`, `bottom`, `bottom_right`, `manual`. Using `auto` will adjust your design the best way possible given the product, it is recommended you use this setting. -->
 <!-- x | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design -->
@@ -325,7 +334,10 @@ puts response.read_body
     {
       "carrier": "SPU",
       "number": "ABC12456",
-      "url": "https://example.org/tracking/ABC12456"
+      "url": "https://example.org/tracking/ABC12456",
+      "line_item_refs": [
+        "your_line_item_external_reference1", "your_line_item_external_reference2"
+      ]
     }
   ]
 }
@@ -337,13 +349,13 @@ puts response.read_body
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-id | String | **Yes** | The order ID
+`id` | String | **Yes** | The order ID
 
 `GET https://plus.teezily.com/api/v2/orders?external_reference={id}`
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-id | String | **Yes** | The external order reference
+`id` | String | **Yes** | The external order reference
 
 ### HTTP Response
 
@@ -421,7 +433,10 @@ puts response.read_body
         {
           "carrier": "SPU",
           "number": "ABC12456",
-          "url": "https://example.org/tracking/ABC12456"
+          "url": "https://example.org/tracking/ABC12456",
+          "line_item_refs": [
+            "your_line_item_external_reference1", "your_line_item_external_reference2"
+          ]
         }
       ]
     },
@@ -449,8 +464,8 @@ puts response.read_body
           "variant_reference": "TSRN_U_IGREEN_L",
           "quantity": 3
         }
-      ],
-    },
+      ]
+    }
   ],
   "count": 2
 }
@@ -465,7 +480,7 @@ Available parameters, in addition to [pagination](./#pagination):
 
 Parameter |  Type | Description
 --------- |  ---- | -----------
-status | String | Filter by status
+`status` | String | Filter by status
 
 ### HTTP Response
 
@@ -473,8 +488,8 @@ Returns all [Orders](./#order) objects paginated
 
 Parameter |  Type | Description
 --------- |  ---- | -----------
-results | Array | [Orders](./#order) objects
-count | Integer | Number of results
+`results` | Array | [Orders](./#order) objects
+`count` | Integer | Number of results
 
 
 ## Fulfill an order
@@ -580,7 +595,7 @@ If an order is not yet produced you might still be able to cancel it using the f
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-id | **Yes** | String | The order ID
+`id` | **Yes** | String | The order ID
 
 ### HTTP Response
 
