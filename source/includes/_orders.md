@@ -1,5 +1,106 @@
 # Orders
 
+## The Order Resource
+
+### Order
+
+Parameter                     | Required | Type   | Read Only | Description
+----------------------------- | -------- | ------ | --------- | ----------
+`external_reference`          | No       | String | No        | Your Order ID: O-xxx. Useful to track orders. The API will raise an error if you have any other non-canceled orders with the same `external_reference`
+`email`                       | **Yes**  | String | No        | Buyer's e-mail
+`status`                      | -        | String | Yes       | Order's status. [More](./#order-39-s-statuses)
+`total_amount`                | -        | String | Yes       | Total order amount, including product prices and shipping costs
+`shipping_amount`             | -        | String | Yes       | Shipping cost for the order
+`total_amount_currency`       | -        | String | Yes       | Currency code (ISO 4217) for the total order amount (e.g., 'USD', 'EUR', 'GBP')
+`shipping_amount_currency`    | -        | String | Yes       | Currency code (ISO 4217) for the shipping cost (e.g., 'USD', 'EUR', 'GBP')
+`address`                     | **Yes**  | Object | No        | An [Address](./#address) Object. The API will attempt to verify the address before accepting order
+`line_items`                  | **Yes**  | Array  | No        | An array of [Line Item](./#line-item) Object
+`trackings`                   | No       | Array  | No        | Read only. An array of [Tracking](./#tracking-read-only) Object
+
+### Order's statuses
+
+Status name | Description
+------------| -----------
+`pending` | Order's initial state
+`capturing` | Payment capture in progress
+`paid` | The order is paid
+`ongoing` | Order is in preparation
+`done` | Order is ready and shipping is in progress
+`canceled` | Order is canceled
+`error` | Errors preventing this order to process further
+`pause` | Order paused by an admin.
+`refund` | Order refunded
+
+<!-- shipping_method | No | String | Can be `standard` or `tracking` -->
+<!-- retail | No | Object | A [Retail](./#retail) object for invoicing -->
+
+### Address
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`first_name` | **Yes** | String |
+`last_name` | **Yes** | String |
+`company` | No | String |
+`phone` | No | String |
+`street1` | **Yes** | String |
+`street2` | **Yes** | String | If not present put an empty string
+`city` | **Yes** | String |
+`postcode` | **Yes** | String | Some countries do not require postcodes, in that case put an empty string
+`state` | No | String | Some countries do not require state codes, if it is the case the API will raise an error
+`country_code` | **Yes** | String | Formatted as ISO 3166-1 two-letter
+
+### Line Item
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`external_reference` | No| String | Your unique line item ID. Usefull to track line items. The API will raise an error if you have any other non-canceled line items with the same `external_reference`
+`variant_reference` | **Yes** | String | The variant reference, see the [Product](./#product) endpoint
+`quantity` | **Yes** | Integer
+`designs`  | **Yes** | Array | An array of [Design](./#design) object
+`retail_price` | No | String | Value of single item as purchased from the end customer. Used if VAT is provided so we can generate an invoice for you
+
+### Tracking (read only)
+
+Parameter   | Type     | Description                                                   |
+------------|----------|---------------------------------------------------------------|
+`carrier`     | string   | The carrier's name (e.g., SPU)                                |
+`number`      | string   | The tracking number (e.g., ABC12456)                          |
+`url`         | string   | The URL for tracking the package (e.g., https://example.org/tracking/ABC12456) |
+`line_item_refs` | array | An array of [Line Item's](./#line-item) `external_references` that the tracking is linked to. This information may be partial, missing or empty |
+
+### Design
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`key` | **Yes** | String | Can be `front`, `back`, ... see our [Design specification](./#design-specification) `Side key` column
+`url` | No | String | The url of the production design. Either `url` or `file` must be specified
+`file` | No | File | If you wish to submit your payload in `multipart/form-data` and attach directly the file in it. Either `url` or `file` must be specified
+`position` | No | String | Defaults to `auto` (more positional values coming soon)
+
+<!-- position | No | String | Defaults to `auto`. Used to align the artwork within print area. Valid values are `top_left`, `top`, `top_right`, `center_left`, `center`, `center_right`, `bottom_left`, `bottom`, `bottom_right`, `manual`. Using `auto` will adjust your design the best way possible given the product, it is recommended you use this setting. -->
+<!-- x | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design -->
+<!-- y | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design -->
+<!-- scale | No | String | When using `manual`. Value ranges from `0` to `100` -->
+
+<!-- ### Retail -->
+
+<!-- Retail costs that are to be displayed on the packing slip for international shipments. Retail costs are used only if every `line_item` in order contains the `retail_price` attribute. -->
+<!--  -->
+<!-- Parameter | Required | Type | Description -->
+<!-- --------- | -------- | ---- | ----------- -->
+<!-- vat_number | **Yes** | String | -->
+<!-- vat_currency | **Yes** | String | An [ISO 4217](https://www.wikipedia.org/wiki/ISO_4217) string representing the currency associated with your VAT number if you specify it -->
+<!-- currency | **Yes** | String | An [ISO 4217](https://www.wikipedia.org/wiki/ISO_4217) string representing the currency. Used if VAT is provided so we can generate an invoice for you -->
+<!-- shipping | **Yes** | String | Shipping price -->
+<!-- handling | **Yes** | String | Handling price -->
+<!-- discount | **Yes** | String | Discount price -->
+<!-- total | **Yes** | String | Total price -->
+<!-- tax | **Yes** |  String | Tax price -->
+
+<!-- <aside class="warning"> -->
+<!-- `total_price` must equal `line_items.retail_price` + `shipping_price` + `discount_price` + `handling_price` -->
+<!-- </aside> -->
+
 ## Create an order
 
 ```shell
@@ -170,107 +271,8 @@ puts response.read_body
 
 `POST https://plus.teezily.com/api/v2/orders`
 
-### Order
-
-Parameter                     | Required | Type   | Read Only | Description
------------------------------ | -------- | ------ | --------- | ----------
-`external_reference`          | No       | String | No        | Your Order ID: O-xxx. Useful to track orders. The API will raise an error if you have any other non-canceled orders with the same `external_reference`
-`email`                       | **Yes**  | String | No        | Buyer's e-mail
-`status`                      | -        | String | Yes       | Order's status. [More](./#order-39-s-statuses)
-`total_amount`                | -        | String | Yes       | Total order amount, including product prices and shipping costs
-`shipping_amount`             | -        | String | Yes       | Shipping cost for the order
-`total_amount_currency`       | -        | String | Yes       | Currency code (ISO 4217) for the total order amount (e.g., 'USD', 'EUR', 'GBP')
-`shipping_amount_currency`    | -        | String | Yes       | Currency code (ISO 4217) for the shipping cost (e.g., 'USD', 'EUR', 'GBP')
-`address`                     | **Yes**  | Object | No        | An [Address](./#address) Object. The API will attempt to verify the address before accepting order
-`line_items`                  | **Yes**  | Array  | No        | An array of [Line Item](./#line-item) Object
-`trackings`                   | No       | Array  | No        | Read only. An array of [Tracking](./#tracking-read-only) Object
-
-### Order's statuses
-
-Status name | Description
-------------| -----------
-`pending` | Order's initial state
-`capturing` | Payment capture in progress
-`paid` | The order is paid
-`ongoing` | Order is in preparation
-`done` | Order is ready and shipping is in progress
-`canceled` | Order is canceled
-`error` | Errors preventing this order to process further
-`pause` | Order paused by an admin.
-`refund` | Order refunded
-
-<!-- shipping_method | No | String | Can be `standard` or `tracking` -->
-<!-- retail | No | Object | A [Retail](./#retail) object for invoicing -->
-
 ### HTTP Response
 Returns an [Order](./#order) object
-
-### Address
-
-Parameter | Required | Type | Description
---------- | -------- | ---- | -----------
-`first_name` | **Yes** | String |
-`last_name` | **Yes** | String |
-`company` | No | String |
-`phone` | No | String |
-`street1` | **Yes** | String |
-`street2` | **Yes** | String | If not present put an empty string
-`city` | **Yes** | String |
-`postcode` | **Yes** | String | Some countries do not require postcodes, in that case put an empty string
-`state` | No | String | Some countries do not require state codes, if it is the case the API will raise an error
-`country_code` | **Yes** | String | Formatted as ISO 3166-1 two-letter
-
-### Line Item
-
-Parameter | Required | Type | Description
---------- | -------- | ---- | -----------
-`external_reference` | No| String | Your unique line item ID. Usefull to track line items. The API will raise an error if you have any other non-canceled line items with the same `external_reference`
-`variant_reference` | **Yes** | String | The variant reference, see the [Product](./#product) endpoint
-`quantity` | **Yes** | Integer
-`designs`  | **Yes** | Array | An array of [Design](./#design) object
-`retail_price` | No | String | Value of single item as purchased from the end customer. Used if VAT is provided so we can generate an invoice for you
-
-### Tracking (read only)
-
-Parameter   | Type     | Description                                                   |
-------------|----------|---------------------------------------------------------------|
-`carrier`     | string   | The carrier's name (e.g., SPU)                                |
-`number`      | string   | The tracking number (e.g., ABC12456)                          |
-`url`         | string   | The URL for tracking the package (e.g., https://example.org/tracking/ABC12456) |
-`line_item_refs` | array | An array of [Line Item's](./#line-item) `external_references` that the tracking is linked to. This information may be partial, missing or empty |
-
-### Design
-
-Parameter | Required | Type | Description
---------- | -------- | ---- | -----------
-`key` | **Yes** | String | Can be `front`, `back`, ... see our [Design specification](./#design-specification) `Side key` column
-`url` | No | String | The url of the production design. Either `url` or `file` must be specified
-`file` | No | File | If you wish to submit your payload in `multipart/form-data` and attach directly the file in it. Either `url` or `file` must be specified
-`position` | No | String | Defaults to `auto` (more positional values coming soon)
-
-<!-- position | No | String | Defaults to `auto`. Used to align the artwork within print area. Valid values are `top_left`, `top`, `top_right`, `center_left`, `center`, `center_right`, `bottom_left`, `bottom`, `bottom_right`, `manual`. Using `auto` will adjust your design the best way possible given the product, it is recommended you use this setting. -->
-<!-- x | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design -->
-<!-- y | No | String | When using `manual`. Value ranges from `0` to `100`, origin is the center of the design -->
-<!-- scale | No | String | When using `manual`. Value ranges from `0` to `100` -->
-
-<!-- ### Retail -->
-
-<!-- Retail costs that are to be displayed on the packing slip for international shipments. Retail costs are used only if every `line_item` in order contains the `retail_price` attribute. -->
-<!--  -->
-<!-- Parameter | Required | Type | Description -->
-<!-- --------- | -------- | ---- | ----------- -->
-<!-- vat_number | **Yes** | String | -->
-<!-- vat_currency | **Yes** | String | An [ISO 4217](https://www.wikipedia.org/wiki/ISO_4217) string representing the currency associated with your VAT number if you specify it -->
-<!-- currency | **Yes** | String | An [ISO 4217](https://www.wikipedia.org/wiki/ISO_4217) string representing the currency. Used if VAT is provided so we can generate an invoice for you -->
-<!-- shipping | **Yes** | String | Shipping price -->
-<!-- handling | **Yes** | String | Handling price -->
-<!-- discount | **Yes** | String | Discount price -->
-<!-- total | **Yes** | String | Total price -->
-<!-- tax | **Yes** |  String | Tax price -->
-
-<!-- <aside class="warning"> -->
-<!-- `total_price` must equal `line_items.retail_price` + `shipping_price` + `discount_price` + `handling_price` -->
-<!-- </aside> -->
 
 ## Get a single order
 
