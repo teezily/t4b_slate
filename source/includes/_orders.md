@@ -139,6 +139,10 @@ puts response.read_body
   "external_reference": "C9759",
   "shipping_method": "tracking",
   "email": "orval_jerde@ko.org",
+  "total_amount": "29.58",
+  "shipping_amount": "7.28",
+  "total_amount_currency": "USD",
+  "shipping_amount_currency": "USD",
   "status": "pending",
   "address": {
     "first_name": "Shalon",
@@ -168,14 +172,18 @@ puts response.read_body
 
 ### Order
 
-Parameter | Required | Type | Description
---------- | -------- | ---- | -----------
-`external_reference` | No| String | Your Order ID: O-xxx. Usefull to track orders. The API will raise an error if you have any other non-canceled orders with the same `external_reference`
-`email` | Yes | String | Buyer's e-mail
-`status` | No | String | Order's status. Do not submit this parameter for creation. [More](./#order-39-s-statuses)
-`address` | **Yes** | Object | An [Address](./#address) Object. The API will attempt to verify the address before accepting order
-`line_items` | **Yes** | Array | An array of [Line Item](./#line-item) Object
-`trackings` | No | Array | Read only. An array of [Tracking](./#tracking-read-only) Object
+Parameter                     | Required | Type   | Read Only | Description
+----------------------------- | -------- | ------ | --------- | ----------
+`external_reference`          | No       | String | No        | Your Order ID: O-xxx. Useful to track orders. The API will raise an error if you have any other non-canceled orders with the same `external_reference`
+`email`                       | **Yes**  | String | No        | Buyer's e-mail
+`status`                      | -        | String | Yes       | Order's status. [More](./#order-39-s-statuses)
+`total_amount`                | -        | String | Yes       | Total order amount, including product prices and shipping costs
+`shipping_amount`             | -        | String | Yes       | Shipping cost for the order
+`total_amount_currency`       | -        | String | Yes       | Currency code (ISO 4217) for the total order amount (e.g., 'USD', 'EUR', 'GBP')
+`shipping_amount_currency`    | -        | String | Yes       | Currency code (ISO 4217) for the shipping cost (e.g., 'USD', 'EUR', 'GBP')
+`address`                     | **Yes**  | Object | No        | An [Address](./#address) Object. The API will attempt to verify the address before accepting order
+`line_items`                  | **Yes**  | Array  | No        | An array of [Line Item](./#line-item) Object
+`trackings`                   | No       | Array  | No        | Read only. An array of [Tracking](./#tracking-read-only) Object
 
 ### Order's statuses
 
@@ -311,6 +319,10 @@ puts response.read_body
   "shipping_method": "tracking",
   "email": "orval_jerde@ko.org",
   "status": "pending",
+  "total_amount": "29.58",
+  "shipping_amount": "7.28",
+  "total_amount_currency": "USD",
+  "shipping_amount_currency": "USD",
   "address": {
     "first_name": "Shalon",
     "last_name": "Kihn",
@@ -410,6 +422,10 @@ puts response.read_body
       "shipping_method": "tracking",
       "email": "orval_jerde@ko.org",
       "status": "pending",
+      "total_amount": "29.58",
+      "shipping_amount": "7.28",
+      "total_amount_currency": "USD",
+      "shipping_amount_currency": "USD",
       "address": {
         "first_name": "Shalon",
         "last_name": "Kihn",
@@ -446,6 +462,10 @@ puts response.read_body
       "shipping_method": "tracking",
       "email": "hobert@zemlakherzog.name",
       "status": "pending",
+      "total_amount": "29.58",
+      "shipping_amount": "7.28",
+      "total_amount_currency": "USD",
+      "shipping_amount_currency": "USD",
       "address": {
         "first_name": "Nellie",
         "last_name": "Stoltenberg",
